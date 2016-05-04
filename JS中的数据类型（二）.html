@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>JS中的数据类型(二)</title>
+    <script type="text/javascript">
+
+        //第三种数据类型： Number
+        //1 2 3 1.1  3.0 NaN Infinity
+        /*
+         var i = 10;
+         alert("i变量的数据类型 ： " + typeof i);
+         i = NaN;
+         alert("i变量的数据类型 ： " + typeof i);
+         i = Infinity;
+         alert("i变量的数据类型 ： " + typeof i);
+         i = 3.0;
+         alert("i变量的数据类型 ： " + typeof i);
+         */
+
+        //在JS中，不管是整数还是浮点，都是Number数据类型
+        //什么时候执行结果是NaN？
+        //计算结果应该返回数字，但是最终结果不是数字的时候，结果是NaN
+        //NaN  Not a Number  不是一个数字，但是NaN本身是一种Number数组类型
+        /*
+         var a;
+         var b;
+         var c = a + b;
+
+         alert(c);
+
+         var d = "abc";
+         var e = 10;
+         alert(d / e);
+
+         //重要的函数：isNaN(数据)
+         //isNaN函数的执行结果是true/false
+         //该函数的作用是来判断数据是否是一个数字，不是数字是true，是数字是false
+         alert(isNaN(d / e));   //true
+         alert(isNaN(10 / 3));  //false
+
+
+         */
+        //什么时候结果是Infinity？
+        //Infinity表示无穷大，除数是0的时候，结果一定是Infinity
+        /*
+         var reValue = 10 / 0;
+         alert(reValue);
+
+         // alert(10/3);
+
+         //parseInt函数，将非数字转换成证书，保留小数
+         var price = "300";
+         //将字符串price转换成Number类型的数字
+         price = parseInt(price);
+         alert(price + 1);  // 301
+         price = "3.98";
+         alert(price + 1); // 3.981
+
+         //parseFloat函数将非数字转换成数字，保留小数
+         price = "3.95";
+         price = parseFloat(price);
+         alert(price);  //3.95
+
+         */
+        //第四种数据类型 ：Boolean
+        //只有两个值：true  /  false  没有其他值
+        //Boolean类型的数据还是主要使用在逻辑运算中，或者条件控制语句当中
+        /*
+         var flag = true;
+         alert(typeof  flag);   //boolean
+
+         flag = false;
+         alert(typeof flag);   //boolean
+
+         flag = 1;
+         alert(typeof flag);   //number
+
+         //JS中的 "=","==","==="
+         // =  赋值运算
+         var a = true;
+         var b = true;
+         alert(a == b);  //true
+
+         a = true;
+         b = 1;
+         alert(a == b); // true  【1和true虽然是等量关系】
+
+         alert(a === b); // false 【1和true虽然是等量关系，但是数据类型不同】
+
+         a = true;
+         b = true;
+         alert(a == b); // true    "==" 只比较值是否相等
+
+         alert(a === b); // false  "===" 既比较内容，又比较数据类型  更加严格
+         */
+
+        //第五种数据类型 ： Object
+        //new Object()  new Date()  new Array()
+        var o = new Object();
+        alert(typeof o);   //object
+
+        o = null;
+        alert(typeof o);  //object
+
+        //在JS中自定义类
+        //自定义的类，默认继承的父类是Object
+        //JS也是面向对象的编程语言
+        //JS中自定义的函数，函数名本身就是类名
+        /**
+         * 定义类的第一种方式
+         * JS中函数声明就是表示定义了一个类，函数本身又是构造函数，函数声明和类的定义混合完成
+         */
+        function User(id, name) {
+            //属性  id name 是User类的属性
+            this.id = id;
+            this.name = name;
+
+            //方法
+            this.shopping = function () {
+                alert(this.name + " is shopping!");
+            }
+
+        }
+
+        //创建对象，类似于java
+        var user = new User();
+        user.shopping();
+        user = new User(100, "张三");
+        user.shopping();
+
+        /**
+         * 定义类的第二种方式
+         * 定义函数，不当做类的话，建议使用第一种方式
+         * 定义函数，要把这个函数当做一个类来看的话，建议使用第二种方式
+         *
+         */
+        Employee = function (a, b) {
+            this.id = a;
+            this.name = b;
+        }
+
+        var e = new Employee(111,"lisi");
+        alert(e.id + "  " + e.name);
+
+        //给Employee动态扩展一个方法
+
+        Employee.prototype.work = function(){
+            alert(this.name + "： 正在工作");
+        }
+
+        e.work();
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
+
+<!--
+    public class User{
+        //属性的定义
+        private String id;
+        private String name;
+        //构造函数的定义
+        //Methods方法的定义
+    }
+-->
