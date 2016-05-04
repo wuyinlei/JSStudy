@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>JS的数据类型</title>
+    <script type="text/javascript">
+
+        /**
+         * 1、关于JS程序的调试方法：
+         *      1、1 使用原始的方式：window.alert（"消息"）；
+         *      1、2 使用专业的工具：Firebug【ff】
+         *      注意：JS代码假设有100行，错误出现在70行，window.alert（"消息"）；编写在50行
+         *      也可能不执行，建议调试的时候注释掉后50行
+         *
+         * 2、关于JS的数据类型
+         *      2、1 我们学习JS的数据类型不是为了定义变量，
+         *      因为在JS中变量的声明是不需要指定数据类型的
+         *      但是我们起码要知道我们给变量赋值的时候那个
+         *      具体指的数据类型。
+         *
+         *      2、2 JS中的数据类型，包括以下几种
+         *          Undefined
+         *              包括具体的值：undefined
+         *
+         *          String
+         *              包括具体的值：'a'  "a"  "avd" 'des' ...
+         *
+         *          Number
+         *              包括具体的值：1  2  3  1.1   2.0  NaN  Infinity....
+         *
+         *          Boolean
+         *              包括具体的值：true  false
+         *
+         *          Object
+         *              包括具体的值：new Object()  new Date()   new Employee()  null...
+         *
+         */
+
+        //第一种数据类型  Undefined
+        //Undefined数据类型只有一个值，这个值就是undefined
+        //什么时候变量的值是undefined？
+        //只声明，没有给变量赋值或者手动的赋值undefined，变量的值都是undefined
+        //注意：变量没有声明，直接访问那就报错了
+
+        /*
+         var ename;
+         alert(ename);
+
+         ename = undefined;
+         alert(ename);
+         */
+
+        //第二种数据类型 ： String
+        //在JS中字符串可以使用单引号，也可以使用双引号
+        //在JS中没有字符类型，只有字符串类型
+        /*
+         var ename = 'smith';
+         alert(ename);
+         ename = "king";
+         alert(ename);
+         ename = "";
+         alert(ename);
+         */
+
+        //在JS中有一个运算符非常重要，typeof运算符
+        //typeof运算符在程序运行阶段动态判断变量的数据类型
+        //typeof运算符的使用规则： typeof 变量名
+        //typeof运算符运算结果是以下六种结果中的一种结果：typeof运算结果是字符串类型
+        //"undefined"，"number","string","object",""boolean","function"
+        //alert(typeof ename);//---->string
+
+        /*
+         function sum(a, b) {
+         if ((typeof a) == "number" && (typeof b) == "number") {
+         return a + b;
+         } else {
+         alert("参数必须提供数字类型");
+         return;
+         }
+         }
+
+         sum(2,"");*/
+
+        //字符串这种数据类型的数据又可以称为"字符串对象"
+        //虽然被叫做字符串对象，但是字符串对象不属于Object
+        /*
+        var ename = "adfas";
+        alert(ename.length);  //获取字符串的长度
+
+        //prototype属性可以动态给String类型的数据扩展方法和属性
+        //以下是给所有的字符串对下岗扩展一个doSome方法
+        String.prototype.doSome = function () {
+            alert("doSome......");
+        };
+
+        //调用doSome方法
+        ename.doSome();
+
+        String.prototype.doOther = function (args) {
+            alert(args);
+        };
+
+        ename.doOther(100);
+
+        //转换大小写
+        ename = ename.toUpperCase();
+        alert(ename);
+
+        ename = ename.toLowerCase();
+        alert(ename);
+
+*/
+        //截取字符串
+        //alert(ename.substr(1,1));  //从第几位开始截取，后面的数字代表的是截取几位
+
+        //alert("adf".substring1,1);   //起始下标和终止下标，终止下标不包括  ""
+        //alert("adf".substring1,2);   //起始下标和终止下标，终止下标不包括  d
+        //alert("adf".substring1,3);   //起始下标和终止下标，终止下标不包括  df
+
+        alert("1980-10-11".replace("-",",")); //以下替换的时候，只替换第一个  "-"   1980,10-11
+        alert("1980-10-11".replace("-",",")); //以下替换的时候，只替换第一个  "-"
+        //想要全部替换，要使用正则表达式
+
+
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
