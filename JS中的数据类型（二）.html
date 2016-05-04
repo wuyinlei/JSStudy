@@ -140,16 +140,30 @@
             this.name = b;
         }
 
-        var e = new Employee(111,"lisi");
+        var e = new Employee(111, "lisi");
         alert(e.id + "  " + e.name);
 
         //给Employee动态扩展一个方法
 
-        Employee.prototype.work = function(){
+        Employee.prototype.work = function () {
             alert(this.name + "： 正在工作");
         }
 
         e.work();
+
+        /**
+         * undefined   null    NaN  什么区别
+         * 1、数据类型是不一样的
+         */
+        alert(typeof  undefined);  //undefined类型
+        alert(typeof null);  //object类型
+        alert(typeof NaN); // number类型
+
+        //undefined和null属于等量关系，值相等   数据类型不同
+
+        alert(undefined == null);   //true
+        alert(null == NaN);    //false
+        alert(undefined == NaN); // false
 
 
     </script>
