@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>JS中的时钟</title>
+    <script type="text/javascript">
+        function displayTime() {
+
+            //1、获取div元素
+            var timeDiv = document.getElementById("timeDiv");
+
+            //2、获取系统时间
+            var nowTime = new Date();
+            var strNowTime = nowTime.toLocaleString();
+
+            //3、将系统的时间设置到div元素中
+            timeDiv.innerHTML = strNowTime;
+        }
+
+        //每隔一秒调用displayTime()函数
+        function start(){
+            //设置每隔特定时间制定特定函数
+            window.setInterval("displayTime()",1000);
+        }
+    </script>
+</head>
+
+<!--
+    load  事件
+    onLoad  事件
+    load 事件什么时候发生？
+        当整个HTML页面全部加载完毕之后，load事件发生
+
+    onLoad事件句柄需要编写到body标签红
+-->
+<body onload="start()">
+<!--
+    <input type="button" value="显示时钟" onclick="displayTime();">
+    -->
+
+<div id="timeDiv"></div>
+</body>
+</html>
