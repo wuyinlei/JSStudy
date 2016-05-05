@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>使用JS的DOM操作div和span</title>
+    <script type="text/javascript">
+        function setDiv(){
+
+            //获取div元素
+            var div = document.getElementById("myDiv");
+            alert(div);
+            //设置div中的文本
+            //万能的innerHEML属性，在JS中这个属性非常重要
+            //可以通过innerHTML属性来设置元素中的HTML代码，也可以获取该元素的代码
+            //div.innerHTML = "hello";
+            div.innerHTML = "<font color = 'red'>hello world!</font>"
+
+            //获取div元素中的HTML代码
+            alert(div.innerHTML)
+
+        }
+    </script>
+</head>
+<body>
+
+    <input type="button" value="设置div中的文本" onclick="setDiv();">
+   <!--
+    <div id="myDiv">
+
+    </div>
+    -->
+
+    <span id="myDiv"></span>
+
+</body>
+</html>

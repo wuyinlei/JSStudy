@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>checkbox的全选和取消全选</title>
+    <script type="text/javascript">
+
+        //页面加载的时候，所有的复选框都是未选中
+
+        function checkOrChangeAll() {
+            //alert("点我干嘛");
+            //1、获取checkbox的选中状态
+            //获取checkbox元素
+            var checkElt = document.getElementById("checkId");
+            //获取选中状态
+            var checked = checkElt.checked;   //checked属性既可以获取复选框的选中状态，又可以设置选中状态
+
+            //如果checkbox的选中checked = true  将所有的复选框选中  否则，都不选中
+            //获取所有的复选框
+            var mySpan = document.getElementById("mySpan");
+            var allInterests = document.getElementsByName("interest");
+            //循环遍历，取出每一个复选框对象
+            if(checked){
+                //全选
+                for (var i = 0; i < allInterests.length ; i++ ){
+                    allInterests[i].checked = checked;
+                }
+                mySpan.innerHTML = "取消全选"
+            }else{
+                //取消全选
+                for (var i = 0; i < allInterests.length ; i++ ){
+                    allInterests[i].checked = checked;
+                }
+
+                mySpan.innerHTML = "全选"
+            }
+
+
+        }
+    </script>
+</head>
+<body>
+
+<input type="checkbox" id="checkId" onclick="checkOrChangeAll();"><span id="mySpan">全选</span> <br><br>
+
+运动<input type="checkbox" name="interest" value="sport"> <br>
+
+音乐<input type="checkbox" name="interest" value="music"><br>
+
+美食<input type="checkbox" name="interest" value="food"><br>
+
+睡觉<input type="checkbox" name="interest" value="sleep"><br>
+
+跳舞<input type="checkbox" name="interest" value="dance"><br>
+
+</body>
+</html>
