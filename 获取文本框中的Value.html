@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>获取文本框中的Value</title>
+    <script type="text/javascript">
+        function getUserName() {
+            //alert("这是一个测试");
+
+            //思路
+            //第一步：先获取整个文本框的节点
+
+            //第二步：获取文本框节点的value
+
+            //通过元素的id获取该节点
+
+            //document内置对象，属于DOM对象，以下编程属于DOM编程
+            //document有一个方法可以通过id获取元素：getElementById(eltId)
+            var userNameInput = document.getElementById("username");
+            //alert(userNameInput);
+
+            //input文本框中有value属性，所以可以使用这种语法，元素对象.value
+            var username = userNameInput.value;
+            alert(username);
+
+
+            //改类型
+            //userNameInput.type = "checkbox";
+            //改value值
+            // userNameInput.value = "abc";
+
+
+        }
+    </script>
+</head>
+<body>
+
+<input type="text" id="username">
+
+<input type="button" value="提交" onclick="getUserName();">
+
+</body>
+</html>

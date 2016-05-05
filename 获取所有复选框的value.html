@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>获取所有复选框的value</title>
+
+    <script type="text/javascript">
+
+        function getAllCheckBoxValues() {
+            //alert("测试")
+
+            //1、获取所有的复选框
+            //通过name获取所有的控件，name在同一个HTML页面中是可以重名
+            var checkBoxs = document.getElementsByName("interest");
+            alert(checkBoxs.length);
+            //遍历数组，获取每一个复选框中的节点，在获取复选框节点的value
+            for(var i = 0 ; i < checkBoxs.length ; i++){
+                alert(checkBoxs[i].value);
+            }
+
+            //通过标签名称获取元素
+            alert(document.getElementsByTagName("input").length);
+
+        }
+    </script>
+</head>
+<body>
+
+运动<input type="checkbox" name="interest" value="sport">
+
+音乐<input type="checkbox" name="interest" value="music">
+
+美食<input type="checkbox" name="interest" value="food">
+
+睡觉<input type="checkbox" name="interest" value="sleep">
+
+跳舞<input type="checkbox" name="interest" value="dance">
+
+<br><br>
+
+<input type="button" value="提交" onclick="getAllCheckBoxValues();">
+
+</body>
+</html>
