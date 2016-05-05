@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>JS中的数组，JS中内置了一个对象Array</title>
+
+    <script type="text/javascript">
+        //创建数组
+        //静态初始化
+
+        var myArray = [1, 2, 3, 4, 5, 6];
+
+        //获取数组中元素的个数
+        alert(myArray.length);
+
+        for (var i = 0; i < myArray.length; i++) {
+            alert(myArray[i]);
+        }
+
+        //动态初始化
+        myArray = new Array[5];  //动态分配了5个控件，没有手动赋值，系统默认值 undefined
+        for (var i = 0; i < myArray.length; i++) {
+            alert("elt : " + myArray[i]);
+        }
+
+        //手动赋值【JS中的数组的数据类型不一定统一】
+        myArray[0] = false;
+        myArray[1] = "adfab";
+        myArray[3] = 1.0;
+        myArray[4] = new Object();
+        for (var i = 0; i < myArray.length; i++) {
+            alert("element : " + myArray[i]);
+        }
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>
