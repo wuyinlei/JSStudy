@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>BOM中的window对象</title>
+
+    <script type="text/javascript">
+        //window是BOM对象
+        //BOM【Browser Object Model】
+
+        //弹出框
+        window.alert("hello");
+
+        //这个有返回值
+        //删除数据的时候，需要给用户提示，待用户确认删除后，才能删除数据
+        var yes = window.confirm("亲，确认删除么");
+        alert(yes);
+
+        function deleteData(){
+            var ok = window.confirm("亲，真的删除数据么");
+            if(ok){
+                alert("正在删除数据中。。。");
+            }
+        }
+
+        //注意：window.confirm()函数和alert函数相同，都会阻塞HTML页面的加载
+
+    </script>
+</head>
+<body>
+        <input type="button" value="删除" onclick="deleteData();">
+</body>
+</html>
