@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>innerHTML和innerText</title>
+
+    <script type="text/javascript">
+
+        function appInfo(){
+            var browser = {
+                mise:false,
+                firefox:false,
+                opera:false,
+                safari:false,
+                chrome:false,
+                netscape:false,
+                appname:'unknown',
+                version:0
+                    },
+                    userAgent = window.navigator.userAgent.toLowerCase();
+            if(/(mise|firefox|opera|chrome|netscape)\D+(\d[\d.]*)/.test(userAgent)){
+                browser[RegExp.$1] = true;
+                browser.appname = RegExp.$1;
+                browser.version = RegExp.$2;
+            } else if(/version\D+(\d[\d.]*).*safari/.test(userAgent)){
+                browser.safari = true;
+                browser.appname = 'safari';
+                browser.version = RegExp.$2;
+            }
+            return browser;
+        }
+
+        //判断游览器的名称
+        var myos = appInfo();
+        alert(myos.appname);
+
+        /**
+         * InnerHTML : 将后面的字符串当做HTML代码解释并且执行
+         */
+        function testInnerHTML(){
+            var div1 = document.getElementById("div1");
+            div1.innerHTML = "<font color='red'>测试</font>";
+        }
+
+        /**
+         * InnerText : 即使后面指定的字符串是HTML代码，也只是当做普通的字符串来处理
+         */
+        function testInnerText() {
+            var div2 = document.getElementById("div2");
+            //
+            if ("msie" == myos.appname) {
+                div2.innerText = "<font color='red'>测试</font>";
+            } else if ("firefox") {
+                //存在兼容性问题
+                div2.textContent = "<font color='red'>测试</font>";
+            } else{
+                div2.innerText ="<font color='red'>测试</font>"
+            }
+        }
+
+
+    </script>
+</head>
+<body>
+<input type="button" value="div1" onclick="testInnerHTML();">
+<div id="div1"></div>
+
+<input type="button" value="div1" onclick="testInnerText();">
+<div id="div2"></div>
+
+
+</body>
+</html>
