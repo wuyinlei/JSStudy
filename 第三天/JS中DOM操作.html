@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>JS中DOM操作</title>
+    <script type="text/javascript">
+        function addElt(){
+            //alert("添加标签");
+
+            //1、向div中追加一个子节点font
+            var myDiv = document.getElementById("myDiv");
+
+            // 2、创建font节点   //重点
+            var font = document.createElement("font");
+            font.innerHTML = "测试";
+            font.color = "red";
+
+            //3、添加子节点
+            myDiv.appendChild(font);
+        }
+    </script>
+</head>
+<body>
+<input type="button" value="给div添加font标签" onclick="addElt();">
+    <div id="myDiv">
+
+    </div>
+</body>
+</html>
