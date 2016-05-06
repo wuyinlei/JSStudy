@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>字符串的trim函数</title>
+    <script type="text/javascript">
+        var s = "     daf   dadf   ad ";
+        //JS中的String里面有trim函数，但是游览器存在兼容问题，在Chrome/FF游览器中支持
+        //在IE中不支持
+        //s = s.trim();
+
+        //alert("---->" + s + "<----");
+
+        //给String扩展一个通用的函数
+
+        String.prototype.trim = function () {
+            //alert("test");
+            //this  --->就是当前的调用这个函数的
+            //return this.replace("前空白","").replace("后空白","");
+            //正则表达式
+            /**
+             * 前空白的正则表达式   /^\s+/
+             * 后空白的正则表达式   /\s+$/
+             */
+            return this.replace(/^\s+/,"").replace(/\s+$/,"");
+        }
+
+        s = s.trim();
+        alert("---->" + s + "<----");
+    </script>
+</head>
+<body>
+
+</body>
+</html>
