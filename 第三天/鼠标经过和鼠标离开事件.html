@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>鼠标经过和离开事件</title>
+
+    <script type="text/javascript">
+        /*
+        function colorRed() {
+            //获取到超链接的标签
+            var baidu = document.getElementById("baidu");
+            //修改css样式
+            baidu.style.color = "red";
+        }
+
+        function colorBlue(){
+            var baidu = document.getElementById("baidu");
+            baidu.style.color = "blue";
+        }
+        */
+        function changeColor(colorValue){
+            var baidu = document.getElementById("baidu");
+            baidu.style.color = colorValue;
+        }
+
+
+    </script>
+</head>
+<body>
+
+<!--
+    mouseover : 鼠标经过  事件句柄 ： onmouseover
+        mouseout : 鼠标经过  事件句柄 ： onmouseout
+
+-->
+<a
+        id="baidu"
+        style="cursor: pointer ;text-decoration: underline; color: blue;"
+        onmousemove="changeColor('red');"
+        onmouseout="changeColor('blue');"
+
+        >百度</a>
+</body>
+</html>

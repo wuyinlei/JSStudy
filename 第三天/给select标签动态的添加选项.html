@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>给select标签动态的添加选择</title>
+
+    <script type="text/javascript">
+        //添加新选项
+        function addNewOption(){
+            //1、获取课程名
+            var coursename = document.getElementById("coursename").value;
+            //2、获取下拉列表对象
+            var courseselect = document.getElementById("course");
+            //3、创建option新节点
+            var optionElt = document.createElement("option");
+            optionElt.value = coursename;
+            //下面的这个属性存在游览器的兼容问题
+            optionElt.textContent = coursename;
+            //4、将option新节点添加下拉列表对象中
+            courseselect.appendChild(optionElt);
+        }
+    </script>
+</head>
+<body>
+<input type="text" id="coursename">
+<input type="button" value="添加" onclick="addNewOption();">
+<hr>
+    <select id="course">
+        <option value="">--请选择课程--</option>
+    </select>
+
+</body>
+</html>
