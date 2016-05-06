@@ -29,11 +29,49 @@
          *      {1，}    出现至少一次
          *      [0-9]    0-9的数字出现任意一个
          *      [0-9a-zA-Z]{3,}   表示0-9a-zA-Z   之间的字符至少出现3个
+         *
+         *  6、在JS中怎么创建正则表达式对象？正则表达式对象中那个方法最常用？
+         *      创建正则表达式对象对的两种方式
+         *
+         *      第一种方式：【常用】
+         *          var regexp = /正则表达式/flag
+         *
+         *      第二种方式：
+         *          var regexp = new RegExp("正则表达式","flag");
+         *
+         *          注明：flag可选值：i,g,m
+         *                  i-->忽略大小写
+         *                  g-->当前行所有数据
+         *                  m-->支持多行搜索
+         *
+         *               i/g/m可以合并使用
+         *
+         *         正则表达式对象中有一个很重要的方法，叫做test
+         *              语法格式：
+         *              var regexp = /正则表达式/;
+         *              var retValue = regexp.test(字符串)
+         *
+         *              retValue :true  字符串符合正则表达式
+         *              retValue :false  字符串不符合正则表达式
+         *
          */
+
+        function checkEmail(email){
+            var emailRegExp =/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w(2,3))+$/;
+            var ok = emailRegExp.test(email);
+            var emailError  = document.getElementById("emailError");
+            if(ok){
+                emailError.innerHTML = "";
+            } else{
+                emailError.innerHTML = "<font color='red'>邮箱格式错误</font>"
+            }
+        }
 
     </script>
 </head>
 <body>
+    邮箱地址:<input type="text" name="email" onblur="checkEmail(this.value);">
 
+<span id="emailError"></span>
 </body>
 </html>
