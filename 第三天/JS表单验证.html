@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>JS表单验证</title>
+</head>
+<body>
+<!--
+    1、表单验证的时候，精良不要在点击注册按钮的时候才去验证，最好用户填写一个验证一个
+       这样的设计才比较人性化
+
+    2、我们的表单就采用失去焦点就验证信息
+       验证通过的话，不显示任何信息，验证失败，就将错误信息显示到文本框后面
+
+    3、失去焦点的事件是 ：blur事件，句柄是onblur
+
+    4、调用验证方法，将用户名传递给该方法，this.value
+
+    5、验证那些信息？
+        1、验证用户名不能存在
+        2、验证用户名长度必须(6-14)之间
+        3、验证用户名是否存在(要和服务器请求验证)
+
+    6、文本框获取焦点事件 ：focus  句柄是 onfocus
+
+    7、表单提交事件： submit  事件句柄  onsubmit  这个事件句柄要编写到form标签内
+        <form onsubmit = "return true">  提交表单
+        <form onsubmit = "return false">  不提交表单
+-->
+<script type="text/javascript">
+    /*
+     第一种方式：
+     function checkUserName() {
+     //alert("检查用户名是否合法")
+     //获取用户填写的用户名
+     var username = document.getElementById("username");
+     //alert(username);
+
+     }
+     */
+    var usernameOk = false;
+
+    //第二种方式：
+    //验证用户名
+    function checkUserName(username) {
+        // alert(username);
+        var usernameErrorMeessage = document.getElementById("usernameErrorMeessage");
+        //验证用户名不能为空
+        if (username == "") {
+            usernameErrorMeessage.innerHTML = "<font color='red'>用户名不能为空</font>"
+            usernameOk = false;
+        } else if (username.length < 6 || username.length > 14) {
+            usernameErrorMeessage.innerHTML = "<font color='red'>用户名长度必须在【6-14】之间</font>"
+            usernameOk = false;
+        } else if (username.length == 0) {
+            usernameOk = false;
+        } else {
+            usernameOk = true;
+        }
+    }
+
+    //清除错误信息
+    function clearNameError() {
+        var usernameErrorMeessage = document.getElementById("usernameErrorMeessage");
+        usernameErrorMeessage.innerHTML = "";
+    }
+
+    //检查是否可以提交
+    function checkAll() {
+        return usernameOk;
+    }
+
+    /*
+     第三种方式：
+     function checkUserName(username){
+     alert(username);
+     }
+     */
+</script>
+
+<form
+        name="userForm"
+        method="get"
+        action="http://localhost:8080/oa/register"
+        onsubmit="return checkAll();">
+    用户名:
+    <!--
+    第一种方式：
+    <input type="text" id="username" name="username" onblur="checkUserName();"><br>
+
+-->
+    <input type="text" id="username"
+           name="username"
+           onblur="checkUserName(this.value);"
+           onfocus="clearNameError();">
+    <span id="usernameErrorMeessage"></span>
+    <br>
+    <!--
+    第三种方式：
+    <input type="text" id="username" name="username" onblur="checkUserName(userForm.username.value);"><br>
+
+    -->
+    <input type="submit" value="注册">
+</form>
+
+</body>
+</html>
