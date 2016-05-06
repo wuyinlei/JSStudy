@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>表格的动态添加和删除</title>
+
+    <script type="text/javascript">
+
+        /**
+         * 添加新行
+         */
+        function addNewLine() {
+            //1、获取要添加的学生姓名
+            var stuname = document.getElementById("stuname");
+            var name = stuname.value;
+            //2、获取表格对象
+            var tableObj = document.getElementById("stutable")
+            //alert(tableObj);
+            //3、调用表格对象的相关方法添加新行
+            //获取行数
+            var index = tableObj.rows.length;
+            var tableRow = tableObj.insertRow(index);
+            //给tableRow添加id（通过时间数来添加(唯一的)）
+            var time = new Date().getTime();
+            tableRow.id = time;
+            //4、给tableRow对象添加两个单元格
+            var tableCell0 = tableRow.insertCell(0);
+            var tableCell1 = tableRow.insertCell(1);
+
+            //5、给单元格设置值
+            tableCell0.innerHTML = name;
+            tableCell1.innerHTML = '<input type="button" value="删除" onclick="del('+time+');">'
+        }
+
+        /**
+         * 删除新的一行
+         */
+        function del(tableRowId) {
+            //alert(tabltRowId);
+            //通过tableRowId获取tableRow对象
+            var tableRow = document.getElementById(tableRowId);
+            //获取表格堆啊ing
+            var stutable = document.getElementById("stutable");
+
+            //获取tableRow的id
+            var index = tableRow.rowIndex;
+            stutable.deleteRow(index);
+            //var index =;
+            //stutable.deleteRow(index);
+        }
+    </script>
+</head>
+<body>
+
+<input type="text" id="stuname">
+<input type="button" value="添加" onclick="addNewLine();">
+<br>
+<table border="1" width="40%" id="stutable">
+
+
+    <tr align="center">
+        <th>学生姓名</th>
+        <th>操作</th>
+    </tr>
+    <!-- <tr align="center">
+         <td>张三</td>
+         <td>
+             <input type="button" value="删除">
+         </td>
+     </tr>-->
+</table>
+
+</body>
+</html>
