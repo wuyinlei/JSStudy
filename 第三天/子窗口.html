@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>子窗口</title>
+
+    <script type="text/javascript">
+
+        function getParentEmpno(){
+            //获取父窗口里面的
+            //window代表当前子窗口
+
+            //window.opera代表当前子窗口的开启人
+            alert(window.opener.empno)
+        }
+    </script>
+</head>
+<body>
+<input type="button" value="获取父窗口中的empno" onclick="getParentEmpno();">
+</body>
+</html>
